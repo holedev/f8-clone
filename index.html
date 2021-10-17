@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F8 | Học lập trình để đi làm</title>
+    <link rel="shortcut icon" href="./assests/img/f8_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.2.0/styles/a11y-dark.css">
+    <link rel="stylesheet" href="./assests/css/base.css">
+    <link rel="stylesheet" href="./assests/css/home.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
+
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-grid grid">
+                <div class="header-left">
+                    <a href="/" class="header-left__logo">
+                        <img width="100%" src="./assests/img/f8_icon.png" alt="">
+                    </a>
+                    <div class="header-left__heading">Học lập trình để đi làm</div>
+                    <div class="header-left__back">
+                        <div class="header-left__back-icon">
+                            <i class="fas fa-angle-left"></i>
+                        </div>
+                        <div class="header-left__back-text">
+                            Quay lại
+                        </div>
+                    </div>
+                </div>
+                <div class="header-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="header-middle">
+                    <div class="header-middle__search-box">
+                        <div class="header-middle__search-box-icon">
+                            <i class="fal fa-search"></i>
+                        </div>
+                        <input type="text" placeholder="Tìm kiếm khoá học, bài viết, video, ..." class="header-middle__search-box-input">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-right__login">
+                        <div class="header-right__login-btn btn btn-primary">
+                            Đăng nhập
+                        </div>
+                    </div>
+                    <!-- <div class="header-right__notify">
+                        <div class="header-right__notify-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                    </div>
+                    <div class="header-right__me">
+                        <div class="header-right__me-icon">
+    
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="menu-mobile">
+                <div class="menu-mobile__group">
+                    <div class="menu-mobile__item">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Đăng nhập
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-mobile__group">
+                    <div class="home menu-mobile__item active">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Home
+                        </div>
+                    </div>
+                    <div class="learn menu-mobile__item">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Học
+                        </div>
+                    </div>
+                    <div class="questions menu-mobile__item">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Hỏi
+                        </div>
+                    </div>
+                    <div class="blog menu-mobile__item">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Blog
+                        </div>
+                    </div>
+                    <div class="code menu-mobile__item">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Code
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-mobile__group">
+                    <div class="menu-mobile__item">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Giới thiệu
+                        </div>
+                    </div>
+                    <div class="menu-mobile__item">
+                        <div class="menu-mobile__item-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="menu-mobile__item-text">
+                            Cơ hội việc làm
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overplay"></div>
+        </header>
+
+        <div class="main">
+            <div class="main-grid">
+                <div class="main-left">
+                    <div class="main-left__plus">
+                        <i class="fas fa-plus"></i>
+                        <div class="main-left__plus-list">
+                            <div class="main-left__plus-item">
+                                <div class="main-left__plus-item-icon">
+                                    <i class="fas fa-pen"></i>
+                                </div>
+                                <div class="main-left__plus-item-text">
+                                    Viết blog
+                                </div>
+                            </div>
+                            <div class="main-left__plus-item">
+                                <div class="main-left__plus-item-icon">
+                                    <i class="fas fa-question"></i>
+                                </div>
+                                <div class="main-left__plus-item-text">
+                                    Đặt câu hỏi
+                                </div>
+                            </div>
+                            <div class="main-left__plus-item">
+                                <div class="main-left__plus-item-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="main-left__plus-item-text">
+                                    Chia sẻ code
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="main-left__list">
+                        <li id="home" class="main-left__item active">
+                            <div class="main-left__item-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="main-left__item-text">
+                                Home
+                            </div>
+                        </li>
+                        <li id="learn" class="main-left__item">
+                            <div class="main-left__item-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="main-left__item-text">
+                                Học
+                            </div>
+                        </li>
+                        <li id="questions" class="main-left__item">
+                            <div class="main-left__item-icon">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <div class="main-left__item-text">
+                                Hỏi
+                            </div>
+                        </li>
+                        <li id="blog" class="main-left__item">
+                            <div class="main-left__item-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="main-left__item-text">
+                                Blog
+                            </div>
+                        </li>
+                        <li id="code" class="main-left__item">
+                            <div class="main-left__item-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="main-left__item-text">
+                                Code
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main-right">
+                    <div class="main-right__home home">  
+                        <div class="main-right__slider">
+                            <div class="main-right__slider-wrap">
+                                <div class="main-right__slider-track">
+
+                                </div>
+                            </div>
+                            <div class="main-right__slider-bars">
+                                
+                            </div>
+                            <div class="main-right__slider-btn prev-btn">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="main-right__slider-btn next-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="main-right__item main-right__courses">
+                            <div class="main-right__courses-total">
+                                <span>
+                                    108.330+
+                                </span>
+                                người khác đã học
+                            </div>
+                            <div class="main-right__item-title">
+                                <h2>Khoá học nổi bật</h2>
+                                <div class="main-right__item-more">
+                                    <span>Xem tất cả</span>
+                                    <div class="main-right__item-more-icon">
+                                        <i class="fas fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-right__item-list">
+                                <div class="main-right__item-wrap">
+                                    
+                                </div>
+                                <div class="main-right__item-btn prev-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="main-right__item-btn next-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="main-right__item main-right__blog">
+                            <div class="main-right__item-title">
+                                <h2>Bài viết nổi bật</h2>
+                                <div class="main-right__item-more">
+                                    <span>Xem tất cả</span>
+                                    <div class="main-right__item-more-icon">
+                                        <i class="fas fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-right__item-list">
+                                <div class="main-right__item-wrap">
+            
+                                </div>
+                                <div class="main-right__item-btn prev-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="main-right__item-btn next-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="main-right__item main-right__video">
+                            <div class="main-right__item-title">
+                                <h2>Video nổi bật</h2>
+                                <div class="main-right__item-more">
+                                    <span>Xem tất cả</span>
+                                    <div class="main-right__item-more-icon">
+                                        <i class="fas fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-right__item-list">
+                                <div class="main-right__item-wrap">
+                                    
+                                </div>
+                                <div class="main-right__item-btn prev-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                                <div class="main-right__item-btn next-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-right__all-courses learn">
+                        <div class="main-right__item-title">
+                            <h2>Khoá học nổi bật</h2>
+                        </div>
+                        <ul class="main-right__all-courses-list">
+                            
+                        </ul>
+                    </div>
+
+                    <div class="main-right__questions questions">
+                        <div class="questions-left">
+                            <div class="questions-left__filter">
+                                <div class="questions-left__filter-type active">
+                                    Nổi bật
+                                </div>
+                                <div class="questions-left__filter-type">
+                                    Chưa trả lời
+                                </div>
+                                <div class="questions-left__filter-type">
+                                    Tất cả
+                                </div>
+                            </div>
+                            
+                            <ul class="list">
+                                <li class="item">
+                                    <div class="item-head">
+                                        <div class="item-head__row">
+                                            <div class="item-head__left">
+                                                Front-end / Mobile Apps
+                                            </div>
+                                            <div class="item-head__right">
+                                                <div class="item-head__right-icon">
+                                                    <i class="far fa-bookmark"></i>
+                                                </div>
+                                                <div class="item-head__right-icon">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-head__row">
+                                            <h3 class="item-head__title">
+                                                Ai thấy giao diện mới của web anh Sơn hiện đại tối giản dơ tay nào
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="item-info">
+                                        <div class="item-info-left">
+                                            <div class="item-info__avt">
+                                                <img src="./assests/img/avt.jpeg" alt="">
+                                            </div>
+                                            <div class="item-info__text">
+                                                Đăng bởi
+                                                <span>
+                                                    Phuong Quang Tran
+                                                </span>
+                                            </div>
+                                            ·
+                                            <div class="item-info__time">
+                                                <span>
+                                                    một tháng trước
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-right">
+                                            <div class="item-info__avt">
+                                                <img src="./assests/img/avt.jpeg" alt="">
+                                            </div>
+                                            <div class="item-info__text">
+                                                123 trả lời
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-desc">
+                                        <div class="item-desc_row">
+                                            <div class="item-desc__text">
+                                                Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay...
+                                            </div>
+                                        </div>
+                                        <div class="item-desc_row">
+                                            <div class="item-desc__tags">
+                                                <div class="item-desc__tag">
+                                                    Front-end
+                                                </div>
+                                                <div class="item-desc__tag">
+                                                    Javascript
+                                                </div>
+                                            </div>
+                                            <div class="item-desc__btn">
+                                                Chi tiết
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="main-right__blog-all blog">
+                        <div class="blog-all__left">
+                            <div class="blog-all__left-filter">
+                                <div class="blog-all__left-filter-type active">
+                                    PHÙ HỢP VỚI BẠN
+                                </div>
+                            </div>
+                            
+                            <ul class="list">
+                                <li class="item">
+                                    <div class="item-head">
+                                        <div class="item-head__row">
+                                            <div class="item-head__left">
+                                                <div class="item-head__left-avt">
+                                                    <img src="./assests/img/avt.jpeg" alt="">
+                                                </div>
+                                                <div class="item-head__left-name">
+                                                    Long Nguyen
+                                                </div>
+                                            </div>
+                                            <div class="item-head__right">
+                                                <div class="item-head__right-icon">
+                                                    <i class="far fa-bookmark"></i>
+                                                </div>
+                                                <div class="item-head__right-icon">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                    <div class="item-head__right-more">
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fab fa-facebook"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Chia sẻ lên Facebook
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fab fa-twitter"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Chia sẻ lên Twitter
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fas fa-envelope"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Chia sẻ tới Email
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fas fa-link"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Sao chép liên kết
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fas fa-flag"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Báo cáo bài viết
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-info">
+                                        <div class="item-info__left">
+                                            <h3 class="item-info__left-title">
+                                                [Cơ bản] Life cycle của Component trong React JS
+                                            </h3>
+                                            <div class="item-desc__text">
+                                                Hello các bạn, nếu như bạn đang chán làm mảng dev web hoặc muốn đổi gió qua mảng dev mobile. Mình nghĩ bạn có thể thử sử dùng...
+                                            </div>
+                                            <div class="item-info__left-more">
+                                                <div class="item-info__left-time">
+                                                    4 ngày trước
+                                                </div>
+                                                ·
+                                                <div class="item-info__left-read">
+                                                    4 phút đọc
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item-info__right">
+                                            <div class="item-info__right-img">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="blog-all__right">
+                            <div class="blog-all__right-title">
+                                CÁC CHỦ ĐỀ ĐƯỢC ĐỀ XUẤT
+                            </div>
+                            <div class="blog-all__right-list">
+                                <div class="blog-all__right-item">
+                                    Front-end / Mobile apps
+                                </div>
+                                <div class="blog-all__right-item">
+                                    Back-end / Devops
+                                </div>
+                                <div class="blog-all__right-item">
+                                    UI / UX / Design
+                                </div>
+                                <div class="blog-all__right-item">
+                                    Others
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-right__code code">
+                        <div class="code__left">
+                            <div class="code__left-filter">
+                                <div class="code__left-filter-type active">
+                                    CHIA SẺ MỚI NHẤT
+                                </div>
+                            </div>
+                            
+                            <ul class="list">
+                                <li class="item">
+                                    <div class="item-head">
+                                        <div class="item-head__row">
+                                            <h3 class="item-head__title">
+                                                Kiểm tra xem ngày có hợp lệ hay không
+                                            </h3>
+                                        </div>
+                                        <div class="item-head__row">
+                                            <div class="item-head__left">
+                                                <div class="item-head__left-avt">
+                                                    <img src="./assests/img/avt.jpeg" alt="">
+                                                </div>
+                                                <div class="item-head__left-name">
+                                                    Long Nguyen
+                                                </div>
+                                                ·
+                                                <div class="item-head__left-time">
+                                                    4 ngày trước
+                                                </div>
+                                            </div>
+                                            <div class="item-head__right">
+                                                <div class="item-head__right-icon">
+                                                    <i class="far fa-bookmark"></i>
+                                                </div>
+                                                <div class="item-head__right-icon more-btn">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                    <div class="item-head__right-more">
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fab fa-facebook"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Chia sẻ lên Facebook
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fab fa-twitter"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Chia sẻ lên Twitter
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fas fa-envelope"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Chia sẻ tới Email
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fas fa-link"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Sao chép liên kết
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-head__right-item">
+                                                            <div class="item-head__right-item-icon">
+                                                                <i class="fas fa-flag"></i>
+                                                            </div>
+                                                            <div class="item-head__right-item-text">
+                                                                Báo cáo bài viết
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-code">
+                                        <div class="item-code__wrap">
+                                            <pre>
+                                                <code class=" language-js">
+
+                                                </code>
+                                            </pre>
+                                        </div>
+                                    </div>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="blog-all__right">
+                            <div class="blog-all__right-title">
+                                CÁC CHỦ ĐỀ ĐƯỢC ĐỀ XUẤT
+                            </div>
+                            <div class="blog-all__right-list">
+                                <div class="blog-all__right-item">
+                                    Javascript
+                                </div>
+                                <div class="blog-all__right-item">
+                                    HTML, CSS
+                                </div>
+                                <div class="blog-all__right-item">
+                                    React JS
+                                </div>
+                                <div class="blog-all__right-item">
+                                    Vue JS
+                                </div>
+                                <div class="blog-all__right-item">
+                                    PHP
+                                </div>
+                                <div class="blog-all__right-item">
+                                    Laravel
+                                </div>
+                                <div class="blog-all__right-item">
+                                    Angular
+                                </div>
+                                <div class="blog-all__right-item">
+                                    Express JS
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-grid grid">
+                <div class="footer-left">
+                    <a href="/" class="footer-left__logo">
+                        <img src="./assests/img/f8_icon.png" alt="">
+                    </a>
+                    <div class="footer-left__item">
+                        Giới thiệu
+                    </div>
+                    <div class="footer-left__item">
+                        Cơ hội việc làm
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-right__icon">
+                        <i class="fab fa-facebook-square"></i>
+                    </div>
+                    <div class="footer-right__icon">
+                        <i class="fab fa-youtube-square"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script src="./assests/js/app.js"></script>
+    
+    <script></script>
+</body>
+</html>

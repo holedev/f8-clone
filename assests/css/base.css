@@ -78,6 +78,14 @@ body {
     left: 0;
     right: 0;
     z-index: 10;
+    opacity: 1;
+    transition: transform ease 0.5s;
+    will-change: transform;
+}
+
+.header.hide {
+    opacity: 0;
+    transform: translateY(-100%);
 }
 
 .header-grid {
@@ -204,7 +212,7 @@ body {
     width: 60%;
     position: fixed;
     top: 0;
-    bottom: 0;
+    height: 100vh;
     left: 0;
     background: #fff;
     z-index: 2;
@@ -215,6 +223,7 @@ body {
     transform: translateX(-100%);
     opacity: 0;
     transition: all ease-in-out 0.5s;
+    z-index: 5;
 }
 
 .menu-mobile.active {
@@ -272,7 +281,14 @@ body {
     border-top: 1px solid #e8ebed;
     background: var(--white-color);
     z-index: 5;
-    display: none;
+    transition: transform ease 0.5s;
+    will-change: transform;
+    transform: translateY(0);
+}
+
+.footer.hide {
+    opacity: 0;
+    transform: translateY(100%);
 }
 
 .footer-grid {

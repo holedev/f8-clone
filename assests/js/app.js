@@ -8,6 +8,8 @@ const blogAPI = 'https://api-gateway.fullstack.edu.vn/api/blog-posts/featured'
 const videosAPI = 'https://api-gateway.fullstack.edu.vn/api/videos/featured'
 const totalStudentAPI = 'https://api-gateway.fullstack.edu.vn/api/analytics'
 const questionsAPI = 'https://api-gateway.fullstack.edu.vn/api/qa-posts?type=best&page='
+const questionsUnAnswerAPI = 'https://api-gateway.fullstack.edu.vn/api/qa-posts?type=unanswered&page='
+const questionsAllAPI = 'https://api-gateway.fullstack.edu.vn/api/qa-posts?type=all&page='
 const blogPostAPI = 'https://api-gateway.fullstack.edu.vn/api/blog-posts?page='
 const codeAPI = 'https://api-gateway.fullstack.edu.vn/api/use-case-posts?page='
 
@@ -561,14 +563,36 @@ function codeToHTML(arr) {
     return htmls
 }
 
-//get questions
+//get questions highlight
 fetch(questionsAPI + '1')
     .then(questions => questions.json())
     .then(questions => {
         const htmls = questionsToHTML(questions.data)
-        $('.main-right__questions .list').innerHTML = htmls
+        $$('.main-right__questions .list')[0].innerHTML = htmls
     })
     .catch(err => alert('FAILURE'))
+
+//get question unanswer
+fetch(questionsUnAnswerAPI + '1')
+    .then(questions => questions.json())
+    .then(questions => {
+        const htmls = questionsToHTML(questions.data)
+        $$('.main-right__questions .list')[1].innerHTML = htmls
+    })
+    .catch(err => alert('FAILURE'))
+
+//get question all
+fetch(questionsAllAPI + '1')
+    .then(questions => questions.json())
+    .then(questions => {
+        const htmls = questionsToHTML(questions.data)
+        $$('.main-right__questions .list')[2].innerHTML = htmls
+    })
+    .catch(err => alert('FAILURE'))
+
+
+
+
 
 //get blog
 fetch(blogPostAPI + '1')
@@ -703,7 +727,7 @@ const app = (() => {
                 }
             })
 
-            //more
+            //share
             const list = $$('.list')
             list.forEach(item => {
                 item.onclick = (e) => {
@@ -730,39 +754,86 @@ const app = (() => {
                 menuMobile.classList.remove('active')
                 overplay.style.display = 'none'
                 document.body.style.overflow = 'auto'
-
             }
 
             toggle.onclick = showMenuMobile
             overplay.onclick = hideMenuMobile
 
+            //question filter
+            const questionFilter = $$('.main-right__questions .questions-left__filter-type')
+            const questionList = $$('.main-right__questions .list')
+            questionFilter.forEach((item, index) => {
+                item.onclick = function(){
+                    const activeItem = $('.main-right__questions .questions-left__filter-type.active')
+                    if (activeItem) { activeItem.classList.remove('active') }
+                    item.classList.add('active')
+
+                    const activeList = $('.main-right__questions .list.active')
+                    if (activeList) { activeList.classList.remove('active') }
+                    questionList[index].classList.add('active')
+                }
+            })
+
             //scroll -> load
             const loadMoreList = $$('.load-more')
-            let questionCount = blogCount = 2
+            let highlightCount = unAnswerCount = allCount = blogCount = 2
             window.onscroll = () => {
                 const scrollTop = window.scrollY + window.innerHeight - $('.header').offsetHeight
                 loadMoreList.forEach((component) => {
                     if (component.classList.contains('active')) {
-                        //questions 20 page
-                        if (component.classList.contains('questions') && questionCount <= 20) {
-                            const distance = scrollTop - component.offsetHeight
-                            if (distance == 0) {
-                                fetch(questionsAPI + questionCount)
-                                    .then(questions => questions.json())
-                                    .then(questions => {
-                                        const htmls = questionsToHTML(questions.data)
-                                        $('.main-right__questions .list').insertAdjacentHTML('beforeend', htmls)
-                                        questionCount++
-                                    })
-                                .catch(err => alert('FAILURE'))
+                        if (component.classList.contains('questions')) {
+                            const questionFilter = component.querySelectorAll('.questions-left__filter-type')
+                            const questionList = component.querySelectorAll('.list')
+
+                            //questions highlight 20 page
+                            if (questionFilter[0].classList.contains('active') && highlightCount <= 20) {
+                                const distance = scrollTop - component.offsetHeight
+                                if (distance == 0) {
+                                    fetch(questionsAPI + highlightCount)
+                                        .then(questions => questions.json())
+                                        .then(questions => {
+                                            const htmls = questionsToHTML(questions.data)
+                                            $$('.main-right__questions .list')[0].insertAdjacentHTML('beforeend', htmls)
+                                            highlightCount++
+                                        })
+                                    .catch(err => alert('FAILURE'))
+                                }
+                            }
+
+                            //questions unanswer 4 page
+                            if (questionFilter[1].classList.contains('active') && unAnswerCount <= 4) {
+                                const distance = scrollTop - component.offsetHeight
+                                if (distance == 0) {
+                                    fetch(questionsUnAnswerAPI + unAnswerCount)
+                                        .then(questions => questions.json())
+                                        .then(questions => {
+                                            const htmls = questionsToHTML(questions.data)
+                                            $$('.main-right__questions .list')[1].insertAdjacentHTML('beforeend', htmls)
+                                            unAnswerCount++
+                                        })
+                                    .catch(err => alert('FAILURE'))
+                                }
+                            }
+
+                            //questions all 25 page
+                            if (questionFilter[2].classList.contains('active') && allCount <= 25) {
+                                const distance = scrollTop - component.offsetHeight
+                                if (distance == 0) {
+                                    fetch(questionsAllAPI + allCount)
+                                        .then(questions => questions.json())
+                                        .then(questions => {
+                                            const htmls = questionsToHTML(questions.data)
+                                            $$('.main-right__questions .list')[2].insertAdjacentHTML('beforeend', htmls)
+                                            allCount++
+                                        })
+                                    .catch(err => alert('FAILURE'))
+                                }
                             }
                         }
 
                         //blog 6 page
                         if (component.classList.contains('blog') && blogCount <= 6) {
                             const distance = scrollTop - component.offsetHeight
-                            console.log(distance)
-                            console.log(window.innerHeight)
                             if (distance == 0) {
                                 fetch(blogPostAPI + blogCount)
                                     .then(blog => blog.json())
@@ -776,6 +847,18 @@ const app = (() => {
                         }
                     }
                 })
+
+                const codeActive = $('.main-left__item[id="code"].active')
+                if (codeActive) {
+                    const scrollTop = window.scrollY
+                    if (scrollTop > 100) {
+                        $('.header').classList.add('hide')
+                        $('.footer').classList.add('hide')
+                    } else {
+                        $('.header').classList.remove('hide')
+                        $('.footer').classList.remove('hide')
+                    }
+                }
             }
 
         },

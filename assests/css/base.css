@@ -272,6 +272,7 @@ body {
     border-top: 1px solid #e8ebed;
     background: var(--white-color);
     z-index: 5;
+    display: none;
 }
 
 .footer-grid {

@@ -256,227 +256,330 @@ function loopItem(arr, key) {
     return htmls
 }
 
-//get questions
-fetch(questionsAPI + '1')
-    .then(questions => questions.json())
-    .then(questions => {
-        const htmls = questions.data.map(item => {
-            return `
-            <li class="item">
-                <div class="item-head">
-                    <div class="item-head__row">
-                        <div class="item-head__left">
-                            Front-end / Mobile Apps
+//map question
+function questionsToHTML(arr){
+    const htmls = arr.map(item => {
+        return `
+        <li class="item">
+            <div class="item-head">
+                <div class="item-head__row">
+                    <div class="item-head__left">
+                        Front-end / Mobile Apps
+                    </div>
+                    <div class="item-head__right">
+                        <div class="item-head__right-icon">
+                            <i class="far fa-bookmark"></i>
                         </div>
-                        <div class="item-head__right">
-                            <div class="item-head__right-icon">
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                            <div class="item-head__right-icon more-btn">
-                                <i class="fas fa-ellipsis-h"></i>
-                                <div class="item-head__right-more">
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fab fa-facebook"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ lên Facebook
-                                        </div>
+                        <div class="item-head__right-icon more-btn">
+                            <i class="fas fa-ellipsis-h"></i>
+                            <div class="item-head__right-more">
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fab fa-facebook"></i>
                                     </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fab fa-twitter"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ lên Twitter
-                                        </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ lên Facebook
                                     </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ tới Email
-                                        </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fab fa-twitter"></i>
                                     </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-link"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Sao chép liên kết
-                                        </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ lên Twitter
                                     </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-flag"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Báo cáo bài viết
-                                        </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ tới Email
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-link"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Sao chép liên kết
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-flag"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Báo cáo bài viết
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item-head__row">
-                        <h3 class="item-head__title">
-                            ${item.title}
-                        </h3>
+                </div>
+                <div class="item-head__row">
+                    <h3 class="item-head__title">
+                        ${item.title}
+                    </h3>
+                </div>
+            </div>
+            <div class="item-info">
+                <div class="item-info__left">
+                    <div class="item-info__avt">
+                        <img onerror="this.src='./assests/img/avt.jpeg'" src="${item.user.avatar_cdn}" alt="">
+                    </div>
+                    <div class="item-info__text">
+                        Đăng bởi
+                        <span>
+                            ${item.user.name}
+                        </span>
+                    </div>
+                    ·
+                    <div class="item-info__time">
+                        <span>
+                            ${distanceTime(item.updated_at)} ngày trước
+                        </span>
                     </div>
                 </div>
-                <div class="item-info">
-                    <div class="item-info__left">
-                        <div class="item-info__avt">
-                            <img onerror="this.src='./assests/img/avt.jpeg'" src="${item.user.avatar_cdn}" alt="">
+                <div class="item-info__right">
+                    <div class="item-info__avt">
+                        <img src="./assests/img/avt.jpeg" alt="">
+                    </div>
+                    <div class="item-info__text">
+                        ${item.comments_count} trả lời
+                    </div>
+                </div>
+            </div>
+            <div class="item-desc">
+                <div class="item-desc_row">
+                    <div class="item-desc__text">
+                        ${item.description}
+                    </div>
+                </div>
+                <div class="item-desc_row">
+                    <div class="item-desc__tags">
+                        ${loopItem(item.selected_tags, 'name')}
+                    </div>
+                    <div class="item-desc__btn">
+                        Chi tiết
+                    </div>
+                </div>
+            </div>
+        </li>
+        `
+    }).join('')
+    return htmls
+}
+//map blog
+function blogToHTML(arr) {
+    const htmls = arr.map(item => {
+        return `
+        <li class="item">
+            <div class="item-head">
+                <div class="item-head__row">
+                    <div class="item-head__left">
+                        <div class="item-head__left-avt">
+                            <img src="${item.user.avatar_cdn ? item.user.avatar_cdn : './assests/img/avt.jpeg'}" alt="">
                         </div>
-                        <div class="item-info__text">
-                            Đăng bởi
-                            <span>
-                                ${item.user.name}
-                            </span>
+                        <div class="item-head__left-name">
+                            ${item.user.name}
+                        </div>
+                    </div>
+                    <div class="item-head__right">
+                        <div class="item-head__right-icon">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                        <div class="item-head__right-icon more-btn">
+                            <i class="fas fa-ellipsis-h"></i>
+                            <div class="item-head__right-more">
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fab fa-facebook"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ lên Facebook
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ lên Twitter
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ tới Email
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-link"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Sao chép liên kết
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-flag"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Báo cáo bài viết
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item-info">
+                <div class="item-info__left">
+                    <h3 class="item-info__left-title">
+                        ${item.title}
+                    </h3>
+                    <div class="item-desc__text">
+                        ${item.meta_description}
+                    </div>
+                    <div class="item-info__left-more">
+                        <div class="item-info__left-time">
+                            ${distanceTime(item.published_at)} ngày trước
                         </div>
                         ·
-                        <div class="item-info__time">
-                            <span>
-                                ${distanceTime(item.updated_at)} ngày trước
-                            </span>
-                        </div>
-                    </div>
-                    <div class="item-info__right">
-                        <div class="item-info__avt">
-                            <img src="./assests/img/avt.jpeg" alt="">
-                        </div>
-                        <div class="item-info__text">
-                            ${item.comments_count} trả lời
+                        <div class="item-info__left-read">
+                            ${item.min_read} phút đọc
                         </div>
                     </div>
                 </div>
-                <div class="item-desc">
-                    <div class="item-desc_row">
-                        <div class="item-desc__text">
-                            ${item.description}
+                <div class="item-info__right">
+                    <div class="item-info__right-img" style="background: url('${item.thumbnail_cdn}') center/cover no-repeat">
+
+                    </div>
+                </div>
+            </div>
+            
+        </li>
+        `
+    }).join('')
+    return htmls
+}
+//map code
+function codeToHTML(arr) {
+    const htmls = arr.map(item => {
+        return `
+        <li class="item">
+            <div class="item-head">
+                <div class="item-head__row">
+                    <h3 class="item-head__title">
+                        ${item.title}
+                    </h3>
+                </div>
+                <div class="item-head__row">
+                    <div class="item-head__left">
+                        <div class="item-head__left-avt">
+                            <img src="${item.user.avatar_cdn ? item.user.avatar_cdn : './assests/img/avt.jpeg'}" alt="">
+                        </div>
+                        <div class="item-head__left-name">
+                            ${item.user.name}
+                        </div>
+                        ·
+                        <div class="item-head__left-time">
+                            ${distanceTime(item.updated_at)} ngày trước
                         </div>
                     </div>
-                    <div class="item-desc_row">
-                        <div class="item-desc__tags">
-                            ${loopItem(item.selected_tags, 'name')}
+                    <div class="item-head__right">
+                        <div class="item-head__right-icon">
+                            <i class="far fa-bookmark"></i>
                         </div>
-                        <div class="item-desc__btn">
-                            Chi tiết
+                        <div class="item-head__right-icon more-btn">
+                            <i class="fas fa-ellipsis-h"></i>
+                            <div class="item-head__right-more">
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fab fa-facebook"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ lên Facebook
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ lên Twitter
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Chia sẻ tới Email
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-link"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Sao chép liên kết
+                                    </div>
+                                </div>
+                                <div class="item-head__right-item">
+                                    <div class="item-head__right-item-icon">
+                                        <i class="fas fa-flag"></i>
+                                    </div>
+                                    <div class="item-head__right-item-text">
+                                        Báo cáo bài viết
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </li>
-            `
-        }).join('')
+            </div>
+            <div class="item-code">
+                <div class="item-code__wrap">
+                    <pre>
+                        <code class="language-js">
+                            ${splitString(item.content, true, false)}
+                        </code>
+                    </pre>
+                </div>
+                <div class="item-code__desc">
+                    ${splitString(item.content, false, true)}
+                </div>
+            </div>
+        </li>
+        `
+    }).join('')
+    return htmls
+}
+
+//get questions
+fetch(questionsAPI + '1')
+    .then(questions => questions.json())
+    .then(questions => {
+        const htmls = questionsToHTML(questions.data)
         $('.main-right__questions .list').innerHTML = htmls
     })
     .catch(err => alert('FAILURE'))
-
 
 //get blog
 fetch(blogPostAPI + '1')
     .then(blog => blog.json())
     .then(blog => {
-        const htmls = blog.data.map(item => {
-            return `
-            <li class="item">
-                <div class="item-head">
-                    <div class="item-head__row">
-                        <div class="item-head__left">
-                            <div class="item-head__left-avt">
-                                <img src="${item.user.avatar_cdn ? item.user.avatar_cdn : './assests/img/avt.jpeg'}" alt="">
-                            </div>
-                            <div class="item-head__left-name">
-                                ${item.user.name}
-                            </div>
-                        </div>
-                        <div class="item-head__right">
-                            <div class="item-head__right-icon">
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                            <div class="item-head__right-icon more-btn">
-                                <i class="fas fa-ellipsis-h"></i>
-                                <div class="item-head__right-more">
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fab fa-facebook"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ lên Facebook
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fab fa-twitter"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ lên Twitter
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ tới Email
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-link"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Sao chép liên kết
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-flag"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Báo cáo bài viết
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-info">
-                    <div class="item-info__left">
-                        <h3 class="item-info__left-title">
-                            ${item.title}
-                        </h3>
-                        <div class="item-desc__text">
-                            ${item.meta_description}
-                        </div>
-                        <div class="item-info__left-more">
-                            <div class="item-info__left-time">
-                                ${distanceTime(item.published_at)} ngày trước
-                            </div>
-                            ·
-                            <div class="item-info__left-read">
-                                ${item.min_read} phút đọc
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-info__right">
-                        <div class="item-info__right-img" style="background: url('${item.thumbnail_cdn}') center/cover no-repeat">
-
-                        </div>
-                    </div>
-                </div>
-                
-            </li>
-            `
-        }).join('')
+        const htmls = blogToHTML(blog.data)
         $('.main-right__blog-all .list').innerHTML = htmls
     })
     .catch(err => alert('FAILURE'))
 
-
+//split code
 function splitString(string, string1, string2) {
     if (string2) {
         return string.slice(string.indexOf("```", 4) + 3)
@@ -490,95 +593,7 @@ function splitString(string, string1, string2) {
 fetch(codeAPI + '1')
     .then(code => code.json())
     .then(code => {
-        const htmls = code.data.map(item => {
-            return `
-            <li class="item">
-                <div class="item-head">
-                    <div class="item-head__row">
-                        <h3 class="item-head__title">
-                            ${item.title}
-                        </h3>
-                    </div>
-                    <div class="item-head__row">
-                        <div class="item-head__left">
-                            <div class="item-head__left-avt">
-                                <img src="${item.user.avatar_cdn ? item.user.avatar_cdn : './assests/img/avt.jpeg'}" alt="">
-                            </div>
-                            <div class="item-head__left-name">
-                                ${item.user.name}
-                            </div>
-                            ·
-                            <div class="item-head__left-time">
-                                ${distanceTime(item.updated_at)} ngày trước
-                            </div>
-                        </div>
-                        <div class="item-head__right">
-                            <div class="item-head__right-icon">
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                            <div class="item-head__right-icon more-btn">
-                                <i class="fas fa-ellipsis-h"></i>
-                                <div class="item-head__right-more">
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fab fa-facebook"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ lên Facebook
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fab fa-twitter"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ lên Twitter
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Chia sẻ tới Email
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-link"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Sao chép liên kết
-                                        </div>
-                                    </div>
-                                    <div class="item-head__right-item">
-                                        <div class="item-head__right-item-icon">
-                                            <i class="fas fa-flag"></i>
-                                        </div>
-                                        <div class="item-head__right-item-text">
-                                            Báo cáo bài viết
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-code">
-                    <div class="item-code__wrap">
-                        <pre>
-                            <code class="language-js">
-                                ${splitString(item.content, true, false)}
-                            </code>
-                        </pre>
-                    </div>
-                    <div class="item-code__desc">
-                        ${splitString(item.content, false, true)}
-                    </div>
-                </div>
-            </li>
-            `
-        }).join('')
+        const htmls = codeToHTML(code.data)
         $('.main-right__code .list').innerHTML = htmls
         hljs.highlightAll();
     })
@@ -622,14 +637,14 @@ const app = (() => {
             const itemsMenumobile = $$('.menu-mobile__item')
 
             activeComponent = (item) => {
+                const activeItem = $('.main-right > div.active')
+                if (activeItem) { activeItem.classList.remove('active') }
                 components.forEach(component => {
                     if (component.classList.contains(item)) {
-                        component.style.display = 'flex'
+                        component.classList.add('active')
                         window.scroll({
                             top: 0,
                         })
-                    } else {
-                        component.style.display = 'none'
                     }
                 })
             }
@@ -661,7 +676,7 @@ const app = (() => {
                 activeMobile('home')
             }
 
-            //left layout
+            //menu left layout
             leftLayoutList.forEach(item => {
                 item.onclick = function(){
                     activeLeftLayout(item.id)
@@ -670,6 +685,7 @@ const app = (() => {
                 }
             })
 
+            //plus left layout
             const addPost = $('.main-left__plus')
             addPost.onclick = function(){
                 const list = addPost.querySelector('.main-left__plus-list')
@@ -683,6 +699,7 @@ const app = (() => {
                     activeMobile(item.classList[0])
                     activeComponent(item.classList[0])
                     activeLeftLayout(item.classList[0])
+                    hideMenuMobile()
                 }
             })
 
@@ -704,17 +721,62 @@ const app = (() => {
             const menuMobile = $('.menu-mobile')
             const overplay = $('.overplay')
 
-            toggle.onclick = () => {
+            function showMenuMobile(){
                 menuMobile.classList.add('active')
                 overplay.style.display = 'block'
+                document.body.style.overflow = 'hidden'
             }
-
-            overplay.onclick = function(){
+            function hideMenuMobile(){
                 menuMobile.classList.remove('active')
-                this.style.display = 'none'
+                overplay.style.display = 'none'
+                document.body.style.overflow = 'auto'
+
             }
 
-            
+            toggle.onclick = showMenuMobile
+            overplay.onclick = hideMenuMobile
+
+            //scroll -> load
+            const loadMoreList = $$('.load-more')
+            let questionCount = blogCount = 2
+            window.onscroll = () => {
+                const scrollTop = window.scrollY + window.innerHeight - $('.header').offsetHeight
+                loadMoreList.forEach((component) => {
+                    if (component.classList.contains('active')) {
+                        //questions 20 page
+                        if (component.classList.contains('questions') && questionCount <= 20) {
+                            const distance = scrollTop - component.offsetHeight
+                            if (distance == 0) {
+                                fetch(questionsAPI + questionCount)
+                                    .then(questions => questions.json())
+                                    .then(questions => {
+                                        const htmls = questionsToHTML(questions.data)
+                                        $('.main-right__questions .list').insertAdjacentHTML('beforeend', htmls)
+                                        questionCount++
+                                    })
+                                .catch(err => alert('FAILURE'))
+                            }
+                        }
+
+                        //blog 6 page
+                        if (component.classList.contains('blog') && blogCount <= 6) {
+                            const distance = scrollTop - component.offsetHeight
+                            console.log(distance)
+                            console.log(window.innerHeight)
+                            if (distance == 0) {
+                                fetch(blogPostAPI + blogCount)
+                                    .then(blog => blog.json())
+                                    .then(blog => {
+                                        const htmls = blogToHTML(blog.data)
+                                        $('.main-right__blog-all .list').insertAdjacentHTML('beforeend', htmls)
+                                        blogCount++
+                                    })
+                                    .catch(err => alert('FAILURE'))
+                            }
+                        }
+                    }
+                })
+            }
 
         },
         start(){

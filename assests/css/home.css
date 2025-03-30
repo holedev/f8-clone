@@ -183,7 +183,7 @@
 .main-right__slider-wrap {
     height: 270px;
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .main-right__slider-track {
